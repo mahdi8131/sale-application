@@ -83,5 +83,4 @@ const DeleteClick = (id) => {
         text = "You canceled!";
     }
 }
-
 </script>
