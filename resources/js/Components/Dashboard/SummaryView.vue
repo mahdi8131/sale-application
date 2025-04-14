@@ -1,193 +1,43 @@
 <template>
-    <div class="container-fluid">
-        <div class="row">
+  <div class="p-4">
+    <h1 class="text-2xl font-bold mb-4">Welcome, {{ user.username }}</h1>
 
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100 bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        <span id="product">{{ cummary['product'] }}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Product</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- লগআউট বাটন -->
+    <Link href="/user-logout" class="side-bar-item">
+    <span class="side-bar-item-icon"><i class="fa fa-sign-out-alt text-green" /></span>
+    <span class="side-bar-item-caption">Logout</span>
+    </Link>
 
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100 bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        <span id="product">{{ cummary['category'] }}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Category</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100 bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        <span id="product">{{ cummary['customer'] }}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Customer</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100  bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        <span id="product">{{ cummary['invoice'] }}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Invoice</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100 bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        $ <span id="product">{{ cummary['total'] }}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Total Sale</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100  bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        $ <span id="product">{{ cummary['vat'] }}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Vat Collection</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100  bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        $ <span>{{ cummary['payable'] }}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Total Payable</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100  bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        $ <span>{{ cummary['discount'] }}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Total Discount</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../.../../Assets/img/icon.svg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-white shadow rounded p-4 text-center">
+        <p class="text-gray-500">Total Posts</p>
+        <p class="text-xl font-bold">{{ stats.posts }}</p>
+      </div>
+      <div class="bg-white shadow rounded p-4 text-center">
+        <p class="text-gray-500">Draft Posts</p>
+        <p class="text-xl font-bold">{{ stats.drafts }}</p>
+      </div>
+      <div class="bg-white shadow rounded p-4 text-center">
+        <p class="text-gray-500">Comments</p>
+        <p class="text-xl font-bold">{{ stats.comments }}</p>
+      </div>
+      <div class="bg-white shadow rounded p-4 text-center">
+        <p class="text-gray-500">Bookmarks</p>
+        <p class="text-xl font-bold">{{ stats.bookmarks }}</p>
+      </div>
     </div>
+  </div>
 </template>
 
 <script setup>
-    import { usePage } from '@inertiajs/vue3'
-    const page = usePage()
-    const cummary = page.props.list
-</script>
+import { Link } from '@inertiajs/vue3'
+import { ref } from 'vue';
+// Vue router used for redirection
 
+const props = defineProps({
+  user: Object,
+  stats: Object
+});
+
+
+</script>

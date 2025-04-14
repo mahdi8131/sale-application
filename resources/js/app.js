@@ -1,5 +1,6 @@
 import { router } from "@inertiajs/vue3";
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import "./bootstrap";
 import './Assets/css/main.css'
 import { createApp, h } from "vue";

@@ -1,68 +1,82 @@
 <template>
     <div>
-        <nav id="topNav" class="navbar fixed-top bg-success top-navbar">
-            <div class="container-fluid">
-                <a id="MenuBar" @click="NavOpenClose" class="icon-nav mx-0 my-1 h5">
-                    <i class="fa text-white fa-bars"></i>
-                </a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">📝 Blog</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center gap-2">
+
+                        <!-- Static links -->
+                        <li class="nav-item">
+                            <Link href="/DashboardPage" class="nav-link">Home</Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link href="/PostPage" class="nav-link">Posts</Link>
+                        </li>
+
+                        <!-- Authenticated-only links -->
+                        <template v-if="authUser">
+                            <li class="nav-item">
+                                <Link href="/TagPage" class="nav-link">Tag</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link href="/bookmarks" class="nav-link">Bookmarks</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link href="/notifications" class="nav-link">Notifications</Link>
+                            </li>
+
+                            <!-- Dropdown for authenticated user -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
+                                    data-bs-toggle="dropdown">
+                                    <img :src="authUser.profile_pic || '/default-user.png'" class="rounded-circle me-2"
+                                        width="30" height="30" />
+                                    {{ authUser.username }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <Link href="/DashboardPage" class="dropdown-item">Dashboard</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/ProfilePage" class="dropdown-item">Profile</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/user-logout" method="get" as="button" class="dropdown-item">Logout
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
+                        </template>
+
+                        <!-- Guest-only links -->
+                        <template v-else>
+                            <li class="nav-item">
+                                <Link href="/login" class="nav-link">Login</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link href="/registration" class="nav-link">Register</Link>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
             </div>
         </nav>
-        <div id="sideNav" class="side-nav-open">
-            <div class="side-nav-top text-center">
-                <img alt="" class="side-nav-logo" src="../Assets/img/logo.svg" />
-            </div>
 
-            <Link href="/DashboardPage" class="side-bar-item">
-                <span class="side-bar-item-icon"><i class="fa fa-tachometer-alt text-green" /></span>
-                <span class="side-bar-item-caption">Dashboard</span>
-            </Link>
-
-            <Link href="/CategoryPage" class="side-bar-item">
-                <span class="side-bar-item-icon"><i class="fa fa-th-list text-green" /></span>
-                <span class="side-bar-item-caption">Category</span>
-            </Link>
-
-            <Link href="/CustomerPage" class="side-bar-item">
-                <span class="side-bar-item-icon"><i class="fa fa-users text-green" /></span>
-                <span class="side-bar-item-caption">Customer</span>
-            </Link>
-
-            <Link href="/ProductPage" class="side-bar-item">
-                <span class="side-bar-item-icon"><i class="fa fa-box text-green" /></span>
-                <span class="side-bar-item-caption">Product</span>
-            </Link>
-
-            <Link href="/create-sale" class="side-bar-item">
-                <span class="side-bar-item-icon"><i class="fa fa-shopping-cart text-green" /></span>
-                <span class="side-bar-item-caption">Create Sale</span>
-            </Link>
-
-            <Link href="/InvoiceListPage" class="side-bar-item">
-                <span class="side-bar-item-icon"><i class="fa fa-file-invoice-dollar text-green" /></span>
-                <span class="side-bar-item-caption">Invoice</span>
-            </Link>
-
-            <Link href="/ProfilePage" class="side-bar-item">
-                <span class="side-bar-item-icon"><i class="fa fa-user-circle text-green" /></span>
-                <span class="side-bar-item-caption">Profile</span>
-            </Link>
-
-            <Link href="/user-logout" class="side-bar-item">
-                <span class="side-bar-item-icon"><i class="fa fa-sign-out-alt text-green" /></span>
-                <span class="side-bar-item-caption">Logout</span>
-            </Link>
-
-        </div>
-        <div id="content" class="content">
-            <div class="container-fluid">
-                <main>
-                    <slot></slot>
-                </main>
-            </div>
-        </div>
+        <main class="py-4">
+            <slot />
+        </main>
     </div>
-
 </template>
+
 <script setup>
-import { Link } from '@inertiajs/vue3'
+import { Link, usePage } from '@inertiajs/vue3'
+
+const page = usePage()
+const authUser = page.props.auth?.user
 </script>

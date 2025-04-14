@@ -3,13 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Invoice;
-use App\Models\Product;
-use App\Models\Category;
-use App\Models\Customer;
-use Illuminate\Notifications\Notifiable;
+use App\Models\Bookmark;
+use App\Models\Comment;
+use App\Models\Like;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -22,11 +22,11 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
-        'otp',
         'password',
-        'mobile',
+        'profile_pic',
+        'otp',
     ];
 
     /**
@@ -51,23 +51,21 @@ class User extends Authenticatable
             // 'password' => 'hashed',
         ];
     }
-    public function categories()
-    {
-        return $this->hasMany(Category::class);
+
+    public function posts() {
+        return $this->hasMany(Post::class);
     }
 
-    public function products()
-    {
-        return $this->hasMany(Product::class);
+    public function comments() {
+        return $this->hasMany(Comment::class);
     }
 
-    public function customers()
-    {
-        return $this->hasMany(Customer::class);
+    public function likes() {
+        return $this->hasMany(Like::class);
     }
 
-    public function invoices()
-    {
-        return $this->hasMany(Invoice::class);
+    public function bookmarks() {
+        return $this->hasMany(Bookmark::class);
     }
+ 
 }

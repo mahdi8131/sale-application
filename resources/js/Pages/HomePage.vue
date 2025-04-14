@@ -5,7 +5,7 @@
 
 <template>
     <NavLayout>
-        <div class="container">
+        <!-- <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-7 col-lg-6 center-screen">
                 <div class="card animated fadeIn w-90  p-4">
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     </NavLayout>
 </template>
 

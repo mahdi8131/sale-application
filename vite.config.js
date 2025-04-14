@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import laravel from "laravel-vite-plugin";
-// import tailwindcss from "@tailwindcss/vite";
+
 export default defineConfig({
     plugins: [
         laravel({
@@ -9,10 +9,9 @@ export default defineConfig({
             refresh: true,
         }),
         vue(),
-        // tailwindcss(),
     ],
     build: {
         manifest: true,
-        outDir: "public/build",
+        outDir: "public/build",  
     },
 });
